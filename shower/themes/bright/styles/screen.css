@@ -256,8 +256,9 @@ a {
     transform: translateY(-50%); }
   .slide.cover.h img, .slide.cover.h svg, .slide.cover.h video,
   .slide.cover.h object, .slide.cover.h canvas {
-    left: 50%;
-    height: 100%;
+    top: 30%;
+    left: 70%;
+    height: 70%;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
