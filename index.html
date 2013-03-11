@@ -4,7 +4,7 @@
 	<title>Shower Presentation Engine</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=792, user-scalable=no">
-	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<link rel="stylesheet" href="shower/themes/bright/styles/screen.css">
 	<!--
 		To apply styles to the certain slides
 		set slide ID to get needed elements
@@ -12,7 +12,6 @@
 	<style>
 		#Cover h2 {
 			margin:65px 0 0;
-			color:#FFF;
 			text-align:center;
 			font-size:70px;
 			}
@@ -23,47 +22,80 @@
 </head>
 <body class="list">
 	<header class="caption">
-		<h1>Shower Presentation Engine</h1>
-		<p><a href="http://pepelsbey.net/">Vadim Makeev</a>, <a href="http://opera.com">Opera Software</a></p>
+		<h1>Ruby on Rail 4, let's rock!</h1>
+    <p><a href="https://github.com/stancox/">Oleg Makarov</a></p>
 	</header>
-	<section class="slide cover" id="Cover"><div>
-		<h2>Shower Presentation Engine</h2>
-		<img src="pictures/cover.jpg" alt="">
-	</div></section>
-	<section class="slide" data-timing="00:05"><div>
-		<h2>Slide with timer</h2>
-		<p>It will change right in five seconds</p>
-		<footer>
-			Presenter note for the first slide
-		</footer>
-	</div></section>
+	<section class="slide cover w" id="Cover"><div>
+		<img src="pictures/cover3.png" alt="">
+  </div></section>
+
 	<section class="slide"><div>
-		<h2>Heading</h2>
-		<p>In your slides text you can use <a href="http://google.com/">links</a> and various inline elements for <em>emotional</em> and <strong>strong</strong> emphasis or just for <i>italic</i> or <b>bold</b> decoration. <code>&lt;code&gt;</code> is used for inline code samples.</p>
+		<h2>Upgrade</h2>
+    <p> вставить чото </p>
 		<footer>
 			Presenter note for the second slide
 		</footer>
 	</div></section>
+
+	<section class="slide shout2"><div>
+		<h2>Ruby 1.9.3 for start</h2>
+  </div></section>
+
 	<section class="slide"><div>
-		<h2>Two rows.<br> Mighty heading</h2>
-		<p>You can use two lines header but it would reduce space on a slide. The “Ribbon” theme is designed for seven lines of code after one-line header by default.</p>
-		<p class="note">This paragraph could be used as a footnote</p>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Various lists</h2>
+		<h2>vendor/plugins has gone</h2>
+    <p>If your project is still dependent on vendor/plugins :</p>
 		<ul>
-			<li>Simple lists are marked with bullets.</li>
-			<li>Ordered lists begin with a number.</li>
-			<li>You can even nest lists one inside another.
-				<ol>
-					<li>Or mix their types.</li>
-					<li>But do not go too far.</li>
-					<li>Otherwise audience will be bored.</li>
-				</ol>
-			</li>
-			<li>Look, seven rows exactly!</li>
+      <li>Attempt to find a gem alternative.</li>
+      <li>Convert the plugin into a gem.</li>
+      <li>Move the plugin to your lib folder(lib/plugin_name/*), and create an initializer to require it in your Rails 4 project.</li>
+      <li>Remove the dependency altogether</li>
 		</ul>
 	</div></section>
+
+  <section class="slide"><div>
+		<h2>Out of the box(deprecated)</h2>
+		<ul>
+      <li>Hash-based and Dynamic finder methods <a href="https://github.com/rails/activerecord-deprecated_finders">Gem</a></li>
+      <li>Mass assignment in AR models <a href="https://github.com/rails/protected_attributes">Gem</a></li>
+      <li>ActiveRecord::SessionStore <a href="https://github.com/rails/activerecord-session_store">Gem</a></li>
+      <li>ActiveResource <a href="https://github.com/rails/activeresource">Gem</a></li>
+      <li>Action and page caching for Action Pack <a href="https://github.com/rails/actionpack-action_caching">Gem</a>, <a href="https://github.com/rails/actionpack-page_caching">Gem</a></li>
+      <li>New default test locations <a href="https://github.com/rails/rails/pull/7878">Pull Request</a></li>
+      <li>Remove Active Record Observers and Action Controller Sweepers <a href="https://github.com/rails/rails-observers">Gem</a></li>
+		</ul>
+	</div></section>
+
+  <section class="slide shout2"><div>
+		<h2>Active Support</h2>
+  </div></section>
+
+  <section class="slide"><div>
+   <h2>Rails.queue (in 4.1)</h2>
+   <pre>
+   <code><mark>class</mark> PrintName</code>
+   <code>  <mark>def</mark> run</code>
+   <code>    puts "My name"</code>
+   <code>  <mark>end<mark></code>
+   <code><mark>end</mark></code>
+   </pre>
+   <pre><code>Rails.queue.push(PrintName.new)</code></pre>
+   <pre><code>initialize: config.queue = <mark>MyQueue.new</mark></code></pre>
+   <p>You can even write your own queue, inherit from <mark>Queue</mark></p>
+  </div></section>
+
+  <section class="slide"><div>
+    <h2>Dalli</h2>
+    <p>Replaces memcache-client or new mem_cache_store</p>
+    <pre><code><mark class="comment"># config/environments/production.rb</mark>
+config.action_controller.perform_caching = true
+config.cache_store = :mem_cache_store</code></pre>
+    <ul>
+      <li>It is approximately 20% faster than the memcache-client gem.</li>
+      <li>Dalli has the ability to handle failover with recovery and adjustable timeouts.</li>
+      <li>The codebase is threadsafe.</li>
+      <li>It uses the newer memcached binary protocol.</li>
+  </div></section>
+
 	<section class="slide"><div>
 		<h2>Serious citation</h2>
 		<figure>
@@ -85,6 +117,7 @@
 			<code><mark>&lt;/head&gt;</mark></code>
 		</pre>
 	</div></section>
+
 	<section class="slide"><div>
 		<h2>Code in separate blocks</h2>
 		<pre>
@@ -123,7 +156,6 @@
 		</ul>
 		<p>Shower: <a href="https://github.com/shower/shower">github.com/shower/shower</a></p>
 	</div></section>
-	<p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
 	<!--
 		To hide progress bar from entire presentation
 		just remove “progress” element.
