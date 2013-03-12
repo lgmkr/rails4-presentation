@@ -108,6 +108,19 @@ config.cache_store = :mem_cache_store</code></pre>
       <li>Dalli has the ability to handle failover with recovery and adjustable timeouts.</li>
       <li>The codebase is threadsafe.</li>
       <li>It uses the newer memcached binary protocol.</li>
+    </ul>
+  </div></section>
+
+  <section class="slide shout2"><div>
+		<h2>Action Mailer</h2>
+  </div></section>
+  
+  <section class="slide"><div>
+    <h2>Asynchronous Mailer (in 4.1)</h2>
+    <pre><code><mark class="comment"># production.rb</mark></code></pre>
+    <pre><code>config.queue = ActiveSupport::Queue.new</code></pre>
+    <pre><code><mark class="comment"># or use Sidekiq</mark></code></pre>
+    <pre><code>config.action_mailer.queue = Sidekiq::Client::Queue.new</code></pre>
   </div></section>
 
 	<section class="slide"><div>
