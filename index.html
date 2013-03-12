@@ -122,6 +122,38 @@ config.cache_store = :mem_cache_store</code></pre>
     <pre><code><mark class="comment"># add for use Sidekiq</mark></code></pre>
     <pre><code>config.action_mailer.queue = Sidekiq::Client::Queue.new</code></pre>
   </div></section>
+  
+  <section class="slide shout2"><div>
+		<h2>Active Model</h2>
+  </div></section>
+
+  <section class="slide"><div>
+    <h2>ActiveModel::Model</h2>
+    <pre><code>include <mark>ActiveModel::Model</mark></code></pre>
+    <ul>
+      <li>Override basic model methods</li>
+      <li>Include any other module(extend ActiveModel::Callbacks)</li>
+      <li>Allows Ruby objects to work with Action Pack (form_for)</li> 
+      <li>Model name introspections ???</li>
+      <li>Conversions (ActiveModel::Conversion, to_model, to_param etc) ???</li>
+      <li>Integration between your object and the Rails i18n framework </li>
+      <li>Provides a full validation framework to your objects</li>
+     </ul>
+     <a href="https://github.com/cgriego/active_attr">ActiveAttr</a> for now
+  </div></section>
+  
+  <section class="slide"><div>
+    <h2>ActiveModel Absence Validator</h2>
+    <p><pre>new <mark>validates_absence_of</mark> say <mark>"must be blank"</mark></pre></p>
+    <pre><code><mark class="comment"># in model</mark>
+validates :secret_identity, absence: true</code></pre>
+  </div></section>
+  
+  <section class="slide shout2"><div>
+		<h2>Action Pack</h2>
+  </div></section>
+
+
 
 	<section class="slide"><div>
 		<h2>Serious citation</h2>

@@ -188,7 +188,7 @@ a {
     font-style: italic;
     font-weight: bold; }
 .slide ol, .slide ul {
-  margin: 0 0 48px;
+  margin: 0 0 15px;
   counter-reset: list; }
   .slide ol li, .slide ul li {
     text-indent: -2em; }
