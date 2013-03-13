@@ -153,7 +153,59 @@ validates :secret_identity, absence: true</code></pre>
 		<h2>Action Pack</h2>
   </div></section>
 
+  <section class="slide"><div>
+    <h2>ActionController::Live </h2>
+    <p>The ability to send partial responses to the client immediately</p>
+    <ul>
+      <li>All actions executed from ActionController::Live enabled controllers are run in a separate thread, thus controller action code must be thread safe.</li>
+      <li>A concurrent Ruby Web Server is required to take advantage of live streaming (Puma, Goliath etc)</li>
+      <li>Headers must be written before anything is written to the client.</li>
+      <li>Streams must be closed.</li>
+    </ul>
+  </div></section>
+ 
+  <section class="slide"><div>
+    <h2>ActionController::Live (Code) </h2>
+    <pre>
+    <code><mark>class</mark> MyController &lt; ActionController::Base</code>
+    <code>  <mark>include</mark> ActionController::Live</code>
+    <code>  <mark>def</mark> stream</code>
+    <code>    response.headers['Content-Type'] = 'text/event-stream'</code>
+    <code>    100.times {</code>
+    <code>      response.stream.write "hello world\n"</code>
+    <code>      sleep 1</code>
+    <code>    }</code>
+    <code>    response.stream.close</code>
+    <code>  <mark>end</mark></code>
+    <code><mark>end<mark></code>
+    </pre>
+  </div></section>
+ 
+  <section class="slide"><div>
+  <h2>Strong parameters</h2>
+  <pre>
+    <code><mark>def</mark> user_params</code> 
+    <code>  params.require(:user).permit(:name, :email)</code>
+    <code><mark>end</mark></code>
+  </pre>
+  <ul>
+    <li>You can keep your model code clean</li>
+    <li>You can handle authorization and access of parameters in the controller where it belongs</li>
+  </ul>
+  </div></section>
 
+  <section class="slide"><div>
+  <h2>Turbolinks</h2>
+  <ul>
+    <li>Work with any browser that fully supports pushState and related APIs.</li>
+    <li>Turbolinks is designed to be as light-weight as possible</li>
+    <li>Asset change detection (data-turbolinks-track)</li>
+    <li>Triggering a Turbolinks visit manually (Turbolinks.visit(path))</li>
+    <li>Can be up to <a href="https://github.com/steveklabnik/turbolinks_test/tree/all_the_assets">twice as fast</a> in apps with lots of JS and CSS.</li>
+    <li>Not all js libraries compatible with Turbolinks out of the box. <a href="http://reed.github.com/turbolinks-compatibility/">Turbolinks Compatibility</a></p></li>
+  </ul>
+  <a href="https://github.com/kossnocorp/jquery.turbolinks">jquery.turbolinks</a>
+  </div></section>
 
 	<section class="slide"><div>
 		<h2>Serious citation</h2>
